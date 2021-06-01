@@ -1,0 +1,61 @@
+type Query {
+      allRecipes: [Recipe]
+      readRecipe(_id: ID): Recipe
+
+      allUsers: [User]
+      readUser(_id: ID): User
+      findUserByEmail(email: String): User
+    }
+
+type Recipe {
+      _id: ID
+      recipeName: String!
+      preparationTime: Int!
+      preparationDesc: String!
+      ingredients: String!
+      Image: String
+    }
+
+type User {
+      _id: ID
+      email: String!
+      password: String!
+      name: String!
+    }
+
+type Login {
+  _id: ID!
+  email: String!
+}    
+
+type Mutation {
+      createRecipe(input: RecipeInput): Recipe
+      readRecipe(_id: ID): Recipe
+      updateRecipe(_id: ID, Input: RecipeInput): Recipe
+      deleteRecipe(_id: ID): Recipe
+
+      createUser(input: UserInput): User
+      readUser(_id: ID): User
+      updateUser(_id: ID, Input: UserInput): User
+      deleteUser(_id: ID): User
+
+      login(email: String, password: String): Login
+    }
+
+input RecipeInput {
+      recipeName: String!
+      preparationTime: Int!
+      preparationDesc: String!
+      ingredients: String!
+      Image: String
+    }
+
+input UserInput {
+      email: String!
+      password: String!
+      name: String!
+    }
+input UserLogin {
+      email: String!
+      password: String!
+    }
